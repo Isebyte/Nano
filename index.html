@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" />  -->
+
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <!--<script type="text/javascript" src="/js/index.js"></script>-->
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/particle.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <!--<script type="text/javascript" src="http://cdn.jsdelivr.net/particle-api-js/5/particle.min.js"></script> -->
+    <title>Nano</title>
+</head>
+
+<body>
+    <!-- LOGIN PAGE -->
+    <div id="login">
+        <h1>N A N O</h1>
+        Username:<br>
+        <input type="text" name="user" id="username"><br><br> Password:
+        <br>
+        <input type="password" name="pass" id="password"><br><br>
+        <input type="submit" value="Submit" class="button" id="loginButt"><br>
+        <button type="button" class="button" id="signUpButt">Sign Up</button>
+        <button type="button" class="button" id="forgotButt">Forgot Password?</button>
+    </div>
+    <!-- END LOGIN PAGE -->
+
+    <!-- SIGN UP PAGE -->
+    <div id="signup">
+        <h4>Please input your information to complete registration.</h4>
+        <br> Name:
+        <br>
+        <input type="text" name="user" id="newName"><br><br>
+        <br> Username:
+        <br>
+        <input type="text" name="user" id="newUsername"><br><br> Password:
+        <br>
+        <input type="password" name="pass" id="newPassword"><br>
+        <input type="password" name="pass2" id="newPasswordcopy" placeholder="Enter password again"><br>
+        <br> E-mail:
+        <br>
+        <input type="email" name="email" id="newEmail"><br>
+        <br> Phone Number:<br>
+        <input type="number" name="telephone" id="newPhone"><br>
+        <br> Nano ID:<br>
+        <input type="number" name="doorID" id="newID"><br>
+
+        <br>
+        <input type="submit" value="Create Account" class="button" id="registerButt">
+        <button type="button" class="button" id="back1">back</button>
+
+    </div>
+    <!-- END SIGN UP PAGE -->
+
+    <!-- PASSWORD RECOVERY PAGE -->
+    <div id="passwordRecov">
+        <h4>Please enter your username OR e-mail.</h4>
+        A recovery e-mail with instructions on how to resert your password will be sent.
+        <br>
+        <br> Username:
+        <br>
+        <input type="text" name="userRecovery" id="recoverName"><br><br> E-mail:
+        <br>
+        <input type="email" name="email" id="recoverEmail">
+        <br><br>
+        <input type="submit" value="Recover Password" class="button" id="recoverButt">
+        <input type="button" value="back" class="button" id="back4" /><br>
+
+    </div>
+    <!-- END PASSWORD RECOVERY PAGE -->
+
+    <!-- THANKS PAGE -->
+    <div id="thanks">
+        <h1>Thank you.</h1>
+        <!-- simple thank you message with redirection back to the login page-->
+        We will send you password reset instructions shortly.
+        <br>
+        <input type="button" value="back" class="button" id="back3" /><br>
+    </div>
+    <!-- END THANKS PAGE -->
+
+    <!-- STATUS PAGE -->
+    <div id="status">
+        <h1>Nano Status</h1>
+        <h3> Current Nano:
+            <select name="Nano Number">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+        </select></h3>
+        <!-- DISPLAY DATE AND TIME -->
+        <div id = "currentTime">Loading...</div>
+
+        <!-- END DISPLAY -->
+
+        <!-- TOGGLE MODE-->
+        <div id="currentMode">Current Mode:
+            <div id="currentModeStatus">Clock</div>
+        </div>
+        <button type="button" class="button" id ="toggleMode">Toggle Mode</button>
+
+        <!-- CURRENT TEMPERATURE-->
+        <div id="currentTemp">Current Temperature:
+            <div id="currentTempNum">Loading...</div>
+        </div>
+        <!-- MOTION STATUS -->
+        <div id="motionStat">Motion Status:
+            <div id="motionStatIsDetect">Loading...</div>
+        </div>
+
+        <button type="button" class="button" id="settingsButt">Settings</button>
+        <button type="button" class="button" id="logOutButt">Log out</button>
+
+    </div>
+    <!-- END STATUS PAGE -->
+
+    <!-- SETTINGS PAGE -->
+    <div id="settings">
+        <h1>Settings</h1>
+        <h2>Toggle Notifications</h2>
+        <div id="checkboxes">
+            <ul>
+                <li><input type="checkbox" id="ping"> Ping</li>
+                <li><input type="checkbox" id="motion"> Motion Status Changes</li>
+                <li><input type="checkbox" id="temp"> Temperature Falls below <br>
+                    <input type="number" name="tempLow" id="tempLow"> or above <input type="number" name="tempHigh" id="tempHigh"></li>
+            </ul>
+        </div>
+        <button type="button" class="button" id="save">Save Settings</button>
+        <button type="button" class="button" id="back2">Back</button>
+    </div>
+    <!-- END SETTINGS PAGE -->
+
+</body>
+
+</html>
